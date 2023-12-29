@@ -9,10 +9,8 @@ declare module "@react-three/fiber" {
   }
 }
 
-export const Luma = (props: Object3DNode<LumaSplatsThree, typeof LumaSplatsThree>) => {
-  return (
-    <lumaSplats
-      {...props}
-    />
-  );
+export const Luma = (
+  props: Object3DNode<LumaSplatsThree, typeof LumaSplatsThree>,
+) => {
+  return <lumaSplats {...props} />;
 };
