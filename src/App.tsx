@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { CustomCanvas } from "./components/CustomCanvas";
 import { Luma } from "./components/Luma";
-import { AdaptiveDpr, OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { VRButton, XR, Controllers, Hands } from '@react-three/xr'
+import {
+  AdaptiveDpr,
+  OrbitControls,
+  PerspectiveCamera,
+} from "@react-three/drei";
+import { VRButton, XR, Controllers, Hands } from "@react-three/xr";
 
 export const App = () => {
   const [autoRotate, setAutoRotate] = useState(true);
