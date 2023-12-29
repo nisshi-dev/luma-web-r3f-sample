@@ -1,50 +1,36 @@
-import { Environment, Grid, PivotControls } from "@react-three/drei";
+import { useState } from "react";
 import { CustomCanvas } from "./components/CustomCanvas";
 import { Luma } from "./components/Luma";
+import { AdaptiveDpr, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 export const App = () => {
-  const gridConfig = {
-    gridSize: [10.5, 10.5],
-    cellSize: 0.6,
-    cellThickness: 1,
-    cellColor: "#6f6f6f",
-    sectionSize: 3.3,
-    sectionThickness: 1.5,
-    sectionColor: "#c1c1c1",
-    fadeDistance: 25,
-    fadeStrength: 1,
-    followCamera: false,
-    infiniteGrid: true,
-  };
+  const [autoRotate, setAutoRotate] = useState(true);
 
   return (
     <div className="w-[100vw] h-[100vh]">
       <CustomCanvas>
-        <Environment
-          background={true}
-          blur={0.5} // blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
-          files={"/venice_sunset_1k.hdr"}
-        />
-
-        <Grid
-          position={[0, -1, 0]}
-          args={[10.5, 10.5]}
-          {...gridConfig}
-          renderOrder={-1}
-        />
         <Luma
-          source="https://lumalabs.ai/capture/822bac8d-70d6-404e-aaae-f89f46672c67"
-          position={[-1, 0, 0]}
-          scale={0.5}
+          source="https://lumalabs.ai/capture/ca9ea966-ca24-4ec1-ab0f-af665cb546ff"
+          scale={2}
+          enableThreeShaderIntegration={false}
         />
-        <PivotControls anchor={[0, 0, 0]}>
-          <Luma
-            source="https://lumalabs.ai/capture/b46ae7cf-0e40-431a-9d7e-45bc3ec516c6"
-            position={[1, 0, 0]}
-            scale={0.5}
-            rotation={[0, Math.PI, 0]}
-          />
-        </PivotControls>
+        <AdaptiveDpr pixelated />
+        <PerspectiveCamera
+          fov={75}
+          aspect={window.innerWidth / window.innerHeight}
+          near={0.1}
+          far={1000}
+          position={[0, 0, 5]}
+        />
+        <OrbitControls
+          autoRotate={autoRotate}
+          autoRotateSpeed={2.5}
+          enableDamping={true}
+          onStart={() => {
+            setAutoRotate(false);
+          }}
+          makeDefault
+        />
       </CustomCanvas>
     </div>
   );
