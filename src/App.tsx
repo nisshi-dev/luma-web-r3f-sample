@@ -23,7 +23,7 @@ export const App = () => {
           <Hands />
           <Luma
             source={dataURL}
-            scale={2}
+            scale={1}
             enableThreeShaderIntegration={false}
           />
           <AdaptiveDpr pixelated />
