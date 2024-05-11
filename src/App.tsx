@@ -11,6 +11,9 @@ import { VRButton, XR, Controllers, Hands } from "@react-three/xr";
 export const App = () => {
   const [autoRotate, setAutoRotate] = useState(true);
 
+  //const dataURL = "https://lumalabs.ai/capture/ca9ea966-ca24-4ec1-ab0f-af665cb546ff"
+  const dataURL = "https://lumalabs.ai/capture/8661f25b-8c91-4c09-9c03-87fd6b490138"
+
   return (
     <div className="w-[100vw] h-[100vh]">
       <VRButton />
@@ -19,7 +22,7 @@ export const App = () => {
           <Controllers />
           <Hands />
           <Luma
-            source="https://lumalabs.ai/capture/ca9ea966-ca24-4ec1-ab0f-af665cb546ff"
+            source={dataURL}
             scale={2}
             enableThreeShaderIntegration={false}
           />
